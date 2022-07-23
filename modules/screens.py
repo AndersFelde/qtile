@@ -1,5 +1,5 @@
 from libqtile import bar
-from .widgets import widget, barWidgets
+from .widgets import barWidgets
 from libqtile.config import Screen
 from . import defaults
 
