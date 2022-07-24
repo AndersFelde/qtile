@@ -12,7 +12,7 @@ screens = [
             # leftWidgets + middleWidgets,
             size=30,
             margin=10,
-            background=defaults.colors["background"],
+            background=defaults.colors["transparent"],
         ),
     ),
 ]

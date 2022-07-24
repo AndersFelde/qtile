@@ -9,12 +9,12 @@ class Volume(widget.Volume):
     def setIcon(self):
         if self.volume <= 0:
             self.text = "婢 "
-        elif self.volume <= 15:
+        elif self.volume <= 35:
             self.text = " "
-        elif self.volume < 50:
+        elif self.volume < 70:
             self.text = " "
         else:
-            self.text = " "
+            self.text = "墳 "
 
     def _configure(self, qtile, bar):
         widget.Volume._configure(self, qtile, bar)
@@ -43,7 +43,7 @@ def parseWidgets(leftWidgets, middleWidgets, rightWidgets):
                     widget.Sep(
                         padding=defaults.separator,
                         linewidth=0,
-                        background=defaults.colors["background"],
+                        background=defaults.colors["transparent"],
                     ),
                 )
                 i += 2
@@ -58,7 +58,7 @@ def parseWidgets(leftWidgets, middleWidgets, rightWidgets):
     )
 
 
-def decoration(color=defaults.colors["darkGrey"], left=False, right=False):
+def decoration(color=defaults.colors["dark"], left=False, right=False):
     radius = 8
     if left:
         radius = [8, 0, 0, 8]
@@ -72,14 +72,14 @@ def decoration(color=defaults.colors["darkGrey"], left=False, right=False):
 
 # decor = {
 #     "decorations": [
-#         RectDecoration(colour=defaults.colors["darkGrey"], radius=8, filled=True)
+#         RectDecoration(colour=defaults.colors["dark"], radius=8, filled=True)
 #     ],
 # }
 
 # leftDecor = {
 #     "decorations": [
 #         RectDecoration(
-#             colour=defaults.colors["darkGrey"], radius=[8, 0, 0, 8], filled=True
+#             colour=defaults.colors["dark"], radius=[8, 0, 0, 8], filled=True
 #         )
 #     ],
 # }
@@ -87,7 +87,7 @@ def decoration(color=defaults.colors["darkGrey"], left=False, right=False):
 # rightDecor = {
 #     "decorations": [
 #         RectDecoration(
-#             colour=defaults.colors["darkGrey"], radius=[0, 8, 8, 0], filled=True
+#             colour=defaults.colors["dark"], radius=[0, 8, 8, 0], filled=True
 #         )
 #     ],
 # }
@@ -102,15 +102,9 @@ leftWidgets = [
         **decoration(defaults.colors["blue"]),
         format="  %d %m %Y",
     ),
-    widget.GroupBox(
-        **decoration(),
-        highlight_method="text",
-        this_screen_border=defaults.colors["blue"],
-        this_current_screen_border=defaults.colors["blue"],
-        active=defaults.colors["white"],
-        inactive=defaults.colors["lightGrey"],
-        padding=defaults.padding,
-        margin_x=0,
+    widget.Clock(
+        **decoration(defaults.colors["green"]),
+        format="%H:%M",
     ),
     widget.CurrentLayout(
         **decoration(defaults.colors["orange"]),
@@ -118,15 +112,21 @@ leftWidgets = [
 ]
 
 middleWidgets = [
-    widget.Clock(
-        **decoration(defaults.colors["green"]),
-        format="%H:%M",
+    widget.GroupBox(
+        **decoration(),
+        highlight_method="text",
+        this_screen_border=defaults.colors["blue"],
+        this_current_screen_border=defaults.colors["blue"],
+        active=defaults.colors["white"],
+        inactive=defaults.colors["grey"],
+        padding=defaults.padding,
+        margin_x=0,
     ),
 ]
 
 rightWidgets = [
     widget.DF(
-        **decoration(defaults.colors["lightBlue"]),
+        **decoration(defaults.colors["purple"]),
         format="力 {r:0>2.0f}%",
         visible_on_warn=False,
     ),
@@ -134,7 +134,7 @@ rightWidgets = [
         **decoration(defaults.colors["yellow"]), format=" {load_percent:0>2.0f}%"
     ),
     widget.Memory(
-        **decoration(defaults.colors["blue"]),
+        **decoration(defaults.colors["green"]),
         format=" {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
         measure_mem="G",
     ),
@@ -147,20 +147,20 @@ rightWidgets = [
             "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e paru")
         },
         no_update_string=" 0",
-        colour_have_updates=defaults.colors["darkGrey"],
-        colour_no_updates=defaults.colors["darkGrey"],
+        colour_have_updates=defaults.colors["dark"],
+        colour_no_updates=defaults.colors["dark"],
     ),
     widget.Wlan(
-        **decoration(defaults.colors["lightBlue"], left=True),
+        **decoration(defaults.colors["blue"], left=True),
         format=" ",
         disconnected_message="睊 ",
         fontsize=defaults.fontSize + 5,
     ),
     widget.UPowerWidget(
-        background=defaults.colors["lightBlue"],
-        border_charge_colour=defaults.colors["darkGrey"],
-        fill_normal=defaults.colors["green"],
-        border_colour=defaults.colors["darkGrey"],
+        background=defaults.colors["blue"],
+        border_charge_colour=defaults.colors["dark"],
+        fill_normal=defaults.colors["dark"],
+        border_colour=defaults.colors["dark"],
         border_critical_colour=defaults.colors["red"],
         fill_critical=defaults.colors["red"],
         fill_low=defaults.colors["orange"],
@@ -171,19 +171,20 @@ rightWidgets = [
         battery_width=30,
     ),
     widget.Battery(
-        background=defaults.colors["lightBlue"],
+        background=defaults.colors["blue"],
         format="{char}",
         discharge_char="",
         charge_char="",
         full_char="",
-        low_background=defaults.colors["lightBlue"],
-        low_foreground=defaults.colors["darkGrey"],
+        low_background=defaults.colors["blue"],
+        low_foreground=defaults.colors["dark"],
         insertSeparator=False,
         show_short_text=False,
         update_interval=10,
+        padding=1,
     ),
     Volume(
-        **decoration(defaults.colors["lightBlue"], right=True),
+        **decoration(defaults.colors["blue"], right=True),
         fontsize=defaults.fontSize + 5,
         # font="Font Awesome 5 Free",
         mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},

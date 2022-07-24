@@ -1,22 +1,25 @@
 font = "CaskaydiaCove NF"
 fontSize = 18
-padding = 5
-separator = 20
+padding = 10
+separator = 25
 margin = 3
 spacerLength = 5
 colors = {
-    "white": "#ffffff",
+    "white": "#dcdcdc",
     "black": "#000000",
-    "darkGrey": "#282c34",
-    "lightGrey": "#ABB2BF",
-    "lightRed": "#E06c75",
+    "dark": "#181a1f",
+    "lightDark": "#21252b",
+    "grey": "#ABB2BF",
+    "lightRed": "#ff616e",
     "red": "#f44747",
-    "green": "#98C379",
-    "yellow": "#E5C07B",
+    "green": "#8cc265",
+    "yellow": "#E5C76B",
     "orange": "#f0a45d",
     "blue": "#61afef",
     "lightBlue": "#56b6c2",
-    "background": "#00000000",
+    "darkBlue": "#4d78cc",
+    "purple": "#c678dd",
+    "transparent": "#00000000",
 }
 mod = "mod4"
 terminal = "alacritty"
@@ -25,5 +28,5 @@ widget_defaults = dict(
     fontsize=fontSize,
     padding=padding,
     appendSeparator=True,
-    foreground=colors["darkGrey"],
+    foreground=colors["dark"],
 )
