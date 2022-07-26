@@ -157,6 +157,7 @@ rightWidgets = [
         fgcolor_normal=defaults.colors["dark"],
         format=" {temp}°C",
         format_crit=" {temp}°C",
+        zone="/sys/class/thermal/thermal_zone4/temp"
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),

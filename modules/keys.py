@@ -13,7 +13,6 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     Key([mod], "r", lazy.spawn("rofi -show combi"), desc="spawn rofi"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
@@ -74,4 +73,16 @@ keys = [
     Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
     Key([mod], "comma", lazy.spawn("betterlockscreen -l blur")),
+    Key(
+        [mod],
+        "space",
+        lazy.spawn("/home/kippster/.config/rofi/launchers/misc/launcher.sh"),
+        desc="Application launcher",
+    ),
+    Key(
+        ["mod1"],  # alt
+        "Tab",
+        lazy.spawn("/home/kippster/.config/rofi/launchers/misc/window_switcher.sh"),
+        desc="Application launcher",
+    ),
 ]

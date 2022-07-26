@@ -4,7 +4,6 @@ from libqtile.config import Screen
 from . import defaults
 
 
-print(barWidgets)
 screens = [
     Screen(
         top=bar.Bar(

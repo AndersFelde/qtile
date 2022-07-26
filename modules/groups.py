@@ -23,8 +23,10 @@ for group in groups:
             Key(
                 [mod, "shift"],
                 group.name,
-                lazy.window.togroup(group.name, switch_group=True),
-                desc="Switch to & move focused window to group {}".format(group.name),
+                lazy.window.togroup(group.name, switch_group=False),
+                desc="Switch to & dont move focused window to group {}".format(
+                    group.name
+                ),
             ),
             # Or, use below if you prefer not to switch to that group.
             # # mod1 + shift + letter of group = move focused window to group
