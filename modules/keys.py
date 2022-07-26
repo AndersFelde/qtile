@@ -68,9 +68,21 @@ keys = [
         lazy.spawncmd(),
         desc="Spawn a command using a prompt widget",
     ),
-    Key([], "XF86AudioRaiseVolume", lazy.spawn("amixer set Master 3%+")),
-    Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 3%-")),
-    Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
+    Key(
+        [],
+        "XF86AudioRaiseVolume",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh up"),
+    ),
+    Key(
+        [],
+        "XF86AudioLowerVolume",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh down"),
+    ),
+    Key(
+        [],
+        "XF86AudioMute",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh mute"),
+    ),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
     Key([mod], "comma", lazy.spawn("betterlockscreen -l blur")),
     Key(
