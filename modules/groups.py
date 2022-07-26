@@ -1,6 +1,7 @@
 from libqtile.config import Key, Group
 from libqtile.command import lazy
 from .keys import keys, mod
+from libqtile.config import ScratchPad, DropDown
 
 groups = [Group(i, label="") for i in "123456789"]
 
@@ -31,3 +32,18 @@ for group in groups:
             #     desc="move focused window to group {}".format(i.name)),
         ]
     )
+
+groups.append(
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "alacritty",
+                "alacritty",
+                width=0.8,
+                height=0.6,
+                on_focus_lost_hide=True,
+            )
+        ],
+    )
+)

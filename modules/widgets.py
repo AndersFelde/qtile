@@ -109,6 +109,18 @@ leftWidgets = [
     widget.CurrentLayout(
         **decoration(defaults.colors["orange"]),
     ),
+    widget.CheckUpdates(
+        **decoration(defaults.colors["purple"]),
+        update_interval=1800,
+        distro="Arch_paru",
+        display_format=" {updates}",
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e paru")
+        },
+        no_update_string=" 0",
+        colour_have_updates=defaults.colors["dark"],
+        colour_no_updates=defaults.colors["dark"],
+    ),
 ]
 
 middleWidgets = [
@@ -138,23 +150,24 @@ rightWidgets = [
         format=" {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
         measure_mem="G",
     ),
-    widget.CheckUpdates(
+    widget.ThermalZone(
         **decoration(defaults.colors["orange"]),
-        update_interval=1800,
-        distro="Arch_paru",
-        display_format=" {updates}",
-        mouse_callbacks={
-            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e paru")
-        },
-        no_update_string=" 0",
-        colour_have_updates=defaults.colors["dark"],
-        colour_no_updates=defaults.colors["dark"],
+        fgcolor_crit=defaults.colors["dark"],
+        fgcolor_high=defaults.colors["dark"],
+        fgcolor_normal=defaults.colors["dark"],
+        format=" {temp}°C",
+        format_crit=" {temp}°C",
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),
         format=" ",
         disconnected_message="睊 ",
         fontsize=defaults.fontSize + 5,
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(
+                "eww open-many --toggle background-closer system-menu"
+            )
+        },
     ),
     widget.UPowerWidget(
         background=defaults.colors["blue"],
@@ -169,6 +182,11 @@ rightWidgets = [
         insertSeparator=False,
         battery_height=15,
         battery_width=30,
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(
+                "eww open-many --toggle background-closer system-menu"
+            )
+        },
     ),
     widget.Battery(
         background=defaults.colors["blue"],
@@ -182,12 +200,22 @@ rightWidgets = [
         show_short_text=False,
         update_interval=10,
         padding=1,
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(
+                "eww open-many --toggle background-closer system-menu"
+            )
+        },
     ),
     Volume(
         **decoration(defaults.colors["blue"], right=True),
         fontsize=defaults.fontSize + 5,
         # font="Font Awesome 5 Free",
-        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
+        # mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(
+                "eww open-many --toggle background-closer system-menu"
+            )
+        },
         insertSeparator=False,
     ),
     widget.TextBox(
