@@ -1,5 +1,7 @@
 #!/bin/sh
-feh --bg-scale /usr/share/endeavouros/backgrounds/eos_wallpapers_community/Endy_planet.png
+wallpaper="/usr/share/endeavouros/backgrounds/eos_wallpapers_community/Endy_planet.png"
+feh --bg-scale $wallpaper
+betterlockscreen -u $wallpaper & disown
 picom & disown # --experimental-backends --vsync should prevent screen tearing on most setups if needed
 
 # Low battery notifier

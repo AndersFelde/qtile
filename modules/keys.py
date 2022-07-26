@@ -73,4 +73,5 @@ keys = [
     Key([], "XF86AudioLowerVolume", lazy.spawn("amixer set Master 3%-")),
     Key([], "XF86AudioMute", lazy.spawn("amixer set Master toggle")),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
+    Key([mod], "comma", lazy.spawn("betterlockscreen -l blur")),
 ]
