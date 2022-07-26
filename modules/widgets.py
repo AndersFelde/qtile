@@ -223,7 +223,7 @@ rightWidgets = [
         text="",
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(
-                os.path.expanduser("~/.config/rofi/powermenu.sh")
+                os.path.expanduser("~/.config/rofi/powermenu/powermenu.sh")
             )
         },
         font="Font Awesome 5 Free",
