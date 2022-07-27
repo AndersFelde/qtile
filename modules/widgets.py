@@ -156,11 +156,11 @@ rightWidgets = [
     ),
     widget.ThermalSensor(
         **decoration(defaults.colors["orange"]),
-        format=" {temp}°C",
+        format=" {temp:.0f}°C",
         foreground=defaults.colors["dark"],
         foreground_alert=defaults.colors["blue"],
         # format="{tag}: {temp:.0f}{unit}",
-        # tag_sensor="CPU",
+        tag_sensor="CPU",
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),

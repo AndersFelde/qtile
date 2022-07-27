@@ -24,6 +24,8 @@ layouts = [
 ]
 
 floating_layout = layout.Floating(
+    border_focus=defaults.colors["blue"],
+    border_normal=defaults.colors["dark"],
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
@@ -33,5 +35,5 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+    ],
 )
