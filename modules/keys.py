@@ -98,4 +98,10 @@ keys = [
         lazy.spawn("/home/kippster/.config/rofi/launchers/misc/window_switcher.sh"),
         desc="Application launcher",
     ),
+    Key(
+        [mod],  # alt
+        "f",
+        lazy.window.toggle_floating(),
+        desc="Application launcher",
+    ),
 ]
