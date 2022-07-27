@@ -106,8 +106,12 @@ leftWidgets = [
         **decoration(defaults.colors["green"]),
         format="%H:%M",
     ),
-    widget.CurrentLayout(
+    widget.CurrentLayoutIcon(
         **decoration(defaults.colors["orange"]),
+        use_mask=True,
+        scale=0.75
+        # background="#FFFFFF",
+        # foreground="#FFFFFF"
     ),
     widget.CheckUpdates(
         **decoration(defaults.colors["purple"]),
@@ -150,14 +154,13 @@ rightWidgets = [
         format=" {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
         measure_mem="G",
     ),
-    widget.ThermalZone(
+    widget.ThermalSensor(
         **decoration(defaults.colors["orange"]),
-        fgcolor_crit=defaults.colors["dark"],
-        fgcolor_high=defaults.colors["dark"],
-        fgcolor_normal=defaults.colors["dark"],
         format=" {temp}°C",
-        format_crit=" {temp}°C",
-        zone="/sys/class/thermal/thermal_zone4/temp"
+        foreground=defaults.colors["dark"],
+        foreground_alert=defaults.colors["blue"],
+        # format="{tag}: {temp:.0f}{unit}",
+        # tag_sensor="CPU",
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),
