@@ -160,7 +160,7 @@ rightWidgets = [
         foreground=defaults.colors["dark"],
         foreground_alert=defaults.colors["blue"],
         # format="{tag}: {temp:.0f}{unit}",
-        tag_sensor="CPU",
+        tag_sensor="Package id 0",
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),
@@ -224,7 +224,7 @@ rightWidgets = [
     ),
     widget.TextBox(
         **decoration(defaults.colors["red"]),
-        text="aa",
+        text="",
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(
                 os.path.expanduser("~/.config/rofi/powermenu/powermenu.sh")
