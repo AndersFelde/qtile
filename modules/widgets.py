@@ -158,7 +158,7 @@ rightWidgets = [
         **decoration(defaults.colors["orange"]),
         format=" {temp:.0f}°C",
         foreground=defaults.colors["dark"],
-        foreground_alert=defaults.colors["blue"],
+        foreground_alert=defaults.colors["dark"],
         # format="{tag}: {temp:.0f}{unit}",
         tag_sensor="Package id 0",
     ),
