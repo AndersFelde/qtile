@@ -224,7 +224,7 @@ rightWidgets = [
     ),
     widget.TextBox(
         **decoration(defaults.colors["red"]),
-        text="",
+        text="aa",
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(
                 os.path.expanduser("~/.config/rofi/powermenu/powermenu.sh")
