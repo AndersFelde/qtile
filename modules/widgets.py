@@ -70,52 +70,29 @@ def decoration(color=defaults.colors["dark"], left=False, right=False):
     }
 
 
-# decor = {
-#     "decorations": [
-#         RectDecoration(colour=defaults.colors["dark"], radius=8, filled=True)
-#     ],
-# }
-
-# leftDecor = {
-#     "decorations": [
-#         RectDecoration(
-#             colour=defaults.colors["dark"], radius=[8, 0, 0, 8], filled=True
-#         )
-#     ],
-# }
-
-# rightDecor = {
-#     "decorations": [
-#         RectDecoration(
-#             colour=defaults.colors["dark"], radius=[0, 8, 8, 0], filled=True
-#         )
-#     ],
-# }
-
 leftWidgets = [
-    # widget.Image(
-    #     **decoration(),
-    #     filename="~/.config/qtile/eos-c.png",
-    #     mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("rofi -show combi")},
-    # ),
     widget.Clock(
         **decoration(defaults.colors["blue"]),
+        mouse_callbacks={
+            #google calendar fra brave
+            "Button1": lambda: qtile.cmd_spawn("gtk-launch brave*.desktop")
+        },
         format="  %d %m %Y",
     ),
     widget.Clock(
         **decoration(defaults.colors["green"]),
+        mouse_callbacks={
+            #google calendar fra brave
+            "Button1": lambda: qtile.cmd_spawn("gtk-launch brave*.desktop")
+        },
         format="%H:%M",
     ),
     widget.CurrentLayoutIcon(
-        **decoration(defaults.colors["orange"]),
-        use_mask=True,
-        scale=0.75
-        # background="#FFFFFF",
-        # foreground="#FFFFFF"
+        **decoration(defaults.colors["orange"]), use_mask=True, scale=0.75
     ),
     widget.CheckUpdates(
         **decoration(defaults.colors["purple"]),
-        update_interval=1800,
+        update_interval=90,
         distro="Arch_paru",
         display_format=" {updates}",
         mouse_callbacks={
@@ -145,14 +122,22 @@ rightWidgets = [
         **decoration(defaults.colors["purple"]),
         format="力 {r:0>2.0f}%",
         visible_on_warn=False,
+        mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("baobab")},
     ),
     widget.CPU(
-        **decoration(defaults.colors["yellow"]), format=" {load_percent:0>2.0f}%"
+        **decoration(defaults.colors["yellow"]),
+        format=" {load_percent:0>2.0f}%",
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e htop")
+        },
     ),
     widget.Memory(
         **decoration(defaults.colors["green"]),
         format=" {MemUsed:.0f}{mm}/{MemTotal:.0f}{mm}",
         measure_mem="G",
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e htop")
+        },
     ),
     widget.ThermalSensor(
         **decoration(defaults.colors["orange"]),
@@ -161,6 +146,9 @@ rightWidgets = [
         foreground_alert=defaults.colors["dark"],
         # format="{tag}: {temp:.0f}{unit}",
         tag_sensor="Package id 0",
+        mouse_callbacks={
+            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e htop")
+        },
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),
@@ -214,8 +202,6 @@ rightWidgets = [
     Volume(
         **decoration(defaults.colors["blue"], right=True),
         fontsize=defaults.fontSize + 5,
-        # font="Font Awesome 5 Free",
-        # mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("pavucontrol")},
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(
                 "eww open-many --toggle background-closer system-menu"
