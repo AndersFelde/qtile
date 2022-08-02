@@ -19,4 +19,8 @@ dunst & disown
 # Start welcome
 eos-welcome & disown
 
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown # start polkit agent from GNOME
+# start polkit agent from GNOME
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown 
+
+xset s on
+xset s 600

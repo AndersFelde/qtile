@@ -104,4 +104,9 @@ keys = [
         lazy.window.toggle_floating(),
         desc="Application launcher",
     ),
+    Key(
+        [mod, "shift"],
+        "s",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/screenshot.sh"),
+    ),
 ]
