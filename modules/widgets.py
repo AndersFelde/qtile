@@ -74,16 +74,18 @@ leftWidgets = [
     widget.Clock(
         **decoration(defaults.colors["blue"]),
         mouse_callbacks={
-            #google calendar fra brave
-            "Button1": lambda: qtile.cmd_spawn("gtk-launch brave*.desktop")
+            "Button1": lambda: qtile.cmd_spawn(
+                defaults.terminal + " --hold -e gcalcli agenda"
+            )
         },
         format="  %d %m %Y",
     ),
     widget.Clock(
         **decoration(defaults.colors["green"]),
         mouse_callbacks={
-            #google calendar fra brave
-            "Button1": lambda: qtile.cmd_spawn("gtk-launch brave*.desktop")
+            "Button1": lambda: qtile.cmd_spawn(
+                defaults.terminal + " --hold -e gcalcli agenda"
+            )
         },
         format="%H:%M",
     ),
