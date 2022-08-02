@@ -1,7 +1,7 @@
 #!/bin/sh
-wallpaper="/usr/share/endeavouros/backgrounds/eos_wallpapers_community/Endy_planet.png"
-feh --bg-scale $wallpaper
-betterlockscreen -u $wallpaper & disown
+~/.config/qtile/scripts/autolock.sh & disown
+~/.config/qtile/scripts/wallpaper.sh & disown
+
 picom & disown # --experimental-backends --vsync should prevent screen tearing on most setups if needed
 
 # Low battery notifier
@@ -22,5 +22,3 @@ eos-welcome & disown
 # start polkit agent from GNOME
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown 
 
-xset s on
-xset s 600

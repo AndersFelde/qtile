@@ -85,7 +85,7 @@ keys = [
         lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh mute"),
     ),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
-    Key([mod], "comma", lazy.spawn("betterlockscreen -l blur")),
+    Key([mod], "comma", lazy.spawn("xautolock -locknow")),
     Key(
         [mod],
         "space",
