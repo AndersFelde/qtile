@@ -8,7 +8,7 @@ picom & disown # --experimental-backends --vsync should prevent screen tearing o
 ~/.config/qtile/scripts/low_bat_notifier.sh & disown
 
 # remap caps to escape
-setxkbmap -option "caps:escape"
+setxkbmap -option "caps:escape" & disown
 
 # gestures
 fusuma & disown
