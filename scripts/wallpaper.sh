@@ -8,5 +8,5 @@ then
     echo "Already created wallpaper"
 else
     #does not contain file
-    betterlockscreen -u $wallpaper & disown
+    betterlockscreen -u $wallpaper
 fi
