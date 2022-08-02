@@ -3,7 +3,7 @@
 ### VARIABLES
 
 POLL_INTERVAL=90     # seconds at which to check battery level
-LOW_BAT=99
+LOW_BAT=20
 
 pollBattery() {
     bat=$(acpi -b)
