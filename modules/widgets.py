@@ -198,6 +198,7 @@ rightWidgets = [
         discharge_char="",
         charge_char="",
         full_char="",
+        unknown_char="",
         low_background=defaults.colors["blue"],
         low_foreground=defaults.colors["dark"],
         insertSeparator=False,
