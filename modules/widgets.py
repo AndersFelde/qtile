@@ -103,6 +103,9 @@ leftWidgets = [
         no_update_string=" 0",
         colour_have_updates=defaults.colors["dark"],
         colour_no_updates=defaults.colors["dark"],
+        execute="paru -Qu",
+        restart_indicator="ﰇ"
+        
     ),
 ]
 
