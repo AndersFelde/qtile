@@ -13,6 +13,9 @@ setxkbmap -option "caps:escape" & disown
 # gestures
 fusuma & disown
 
+# widgets
+eww daemon & disown
+
 # notifications
 dunst & disown
 
