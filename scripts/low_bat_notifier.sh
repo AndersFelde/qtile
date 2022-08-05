@@ -3,7 +3,7 @@
 ### VARIABLES
 
 POLL_INTERVAL=90     # seconds at which to check battery level
-LOW_BAT=96
+LOW_BAT=20
 LOW_BAT_MODE=0
 
 pollBattery() {
