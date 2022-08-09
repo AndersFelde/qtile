@@ -95,7 +95,7 @@ leftWidgets = [
     widget.CheckUpdates(
         **decoration(defaults.colors["purple"]),
         update_interval=90,
-        distro="Arch_paru",
+        custom_command="(checkupdates ; paru -Qua) | cat",
         display_format=" {updates}",
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e paru")
@@ -103,7 +103,6 @@ leftWidgets = [
         no_update_string=" 0",
         colour_have_updates=defaults.colors["dark"],
         colour_no_updates=defaults.colors["dark"],
-        execute="paru -Qu",
         restart_indicator="ﰇ",
     ),
 ]
