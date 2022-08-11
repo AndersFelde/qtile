@@ -78,7 +78,7 @@ leftWidgets = [
                 defaults.terminal + " --hold -e gcalcli agenda"
             )
         },
-        format="  %d %m %Y",
+        format="  %d/%m-%Y",
     ),
     widget.Clock(
         **decoration(defaults.colors["green"]),
@@ -98,7 +98,9 @@ leftWidgets = [
         custom_command="(checkupdates ; paru -Qua) | cat",
         display_format=" {updates}",
         mouse_callbacks={
-            "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e paru -Syu --noconfirm")
+            "Button1": lambda: qtile.cmd_spawn(
+                defaults.terminal + " -e paru -Syu --noconfirm"
+            )
         },
         no_update_string=" 0",
         colour_have_updates=defaults.colors["dark"],
