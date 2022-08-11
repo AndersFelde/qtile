@@ -119,6 +119,8 @@ middleWidgets = [
         inactive=defaults.colors["grey"],
         padding=defaults.padding,
         margin_x=0,
+        urgent_alert_method="text",
+        urgent_text=defaults.colors["red"],
     ),
 ]
 
