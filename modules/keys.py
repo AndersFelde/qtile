@@ -107,6 +107,8 @@ keys = [
     Key(
         [mod, "shift"],
         "s",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/screenshot.sh"),
+        lazy.spawn("flameshot gui --clipboard --accept-on-select"),
     ),
+    Key([], "Print", lazy.spawn("flameshot gui")),
+    Key([mod], "p", lazy.spawn("flameshot gui")),
 ]
