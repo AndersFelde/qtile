@@ -11,8 +11,7 @@ picom & disown # --experimental-backends --vsync should prevent screen tearing o
 setxkbmap -option "caps:escape" & disown
 
 # gestures
-fusuma & disown
-
+touchegg & disown
 # widgets
 eww daemon & disown
 
