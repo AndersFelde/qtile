@@ -8,12 +8,12 @@ from modules.screens import screens
 from modules import defaults
 
 dgroups_key_binder = None
-dgroups_app_rules = []  # type: List
+dgroups_app_rules = []
 main = None  # WARNING: this is deprecated and will be removed soon
 follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 auto_fullscreen = True
-focus_on_window_activation = "smart"
+focus_on_window_activation = "urgent"
 wmname = "Qtile"
 widget_defaults = defaults.widget_defaults
