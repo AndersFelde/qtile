@@ -107,7 +107,7 @@ keys = [
     Key(
         [mod, "shift"],
         "s",
-        lazy.spawn("flameshot gui --clipboard --accept-on-select"),
+        lazy.spawn("maim -s -u | xclip -selection clipboard -t image/png -i"),
     ),
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key([mod], "p", lazy.spawn("flameshot gui")),
