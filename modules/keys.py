@@ -107,7 +107,7 @@ keys = [
     Key(
         [mod, "shift"],
         "s",
-        lazy.spawn("maim -s -u | xclip -selection clipboard -t image/png -i"),
+        lazy.spawn("/home/kippster/.config/qtile/scripts/screenshot.sh down"),
     ),
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key([mod], "p", lazy.spawn("flameshot gui")),
