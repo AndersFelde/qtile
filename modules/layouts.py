@@ -9,6 +9,11 @@ layouts = [
         border_normal=defaults.colors["dark"],
     ),
     # layout.Columns(border_focus_stack='#d75f5f'),
+    # layout.MonadThreeCol(
+    #     margin=8,
+    #     border_focus=defaults.colors["blue"],
+    #     border_normal=defaults.colors["dark"],
+    # ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
