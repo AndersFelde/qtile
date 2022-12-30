@@ -49,7 +49,12 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.layout.next(), desc="Toggle between windows"),
-    Key([mod], "z", lazy.next_layout(), desc="Toggle between zoom and not zoom layout"),
+    Key(
+        [mod],
+        "z",
+        lazy.window.toggle_fullscreen(),
+        desc="Toggle between zoom and not zoom",
+    ),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "shift", "control"], "h", lazy.layout.swap_column_left()),
     Key(
