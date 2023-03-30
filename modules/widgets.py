@@ -1,8 +1,10 @@
-from qtile_extras import widget
-from libqtile import qtile
-from qtile_extras.widget.decorations import RectDecoration
-from . import defaults
 import os
+
+from libqtile import qtile
+from qtile_extras import widget
+from qtile_extras.widget.decorations import RectDecoration
+
+from . import defaults
 
 
 class Volume(widget.Volume):
@@ -127,7 +129,8 @@ middleWidgets = [
 rightWidgets = [
     widget.DF(
         **decoration(defaults.colors["purple"]),
-        format="力 {r:0>2.0f}%",
+        # format="力 {r:0>2.0f}%",
+        format="力 {f}{m}B",
         visible_on_warn=False,
         mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("baobab")},
     ),
