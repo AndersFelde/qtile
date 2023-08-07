@@ -1,5 +1,5 @@
-from libqtile.lazy import lazy
 from libqtile.config import Key
+from libqtile.lazy import lazy
 
 from .defaults import mod, terminal
 
@@ -49,6 +49,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.layout.next(), desc="Toggle between windows"),
+    Key([mod, "shift"], "Tab", lazy.next_layout(), desc="Toggle between windows"),
     Key(
         [mod],
         "z",
