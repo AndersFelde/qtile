@@ -1,3 +1,5 @@
+import re
+
 from libqtile import layout
 from libqtile.config import Match
 
@@ -45,5 +47,6 @@ floating_layout = layout.Floating(
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
         Match(title="flameshot"),  # Screenshot
+        Match(title=re.compile("Figure.*")),  # Matplotlib figures
     ],
 )
