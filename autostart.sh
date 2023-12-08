@@ -23,7 +23,3 @@ eos-welcome & disown
 
 # start polkit agent from GNOME
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown 
-
-#nordvpn
-nordvpn connect norway & disown
-
