@@ -7,7 +7,7 @@ LOW_BAT=20
 LOW_BAT_MODE=0
 
 pollBattery() {
-    bat=$(acpi -b)
+    bat=$(acpi -b | tail -n 1)
     state=$(echo ${bat} | awk '{print $3}')
 
     if [[ "$state" = "Not" ]]; then
