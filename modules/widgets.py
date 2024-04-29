@@ -162,7 +162,7 @@ rightWidgets = [
     ),
     widget.Wlan(
         **decoration(defaults.colors["blue"], left=True),
-        format=" ",
+        format="󰖩 ",
         disconnected_message="睊 ",
         fontsize=defaults.fontSize + 5,
         mouse_callbacks={
