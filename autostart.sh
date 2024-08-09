@@ -18,8 +18,5 @@ eww daemon & disown
 # notifications
 dunst & disown
 
-# Start welcome
-eos-welcome & disown
-
 # start polkit agent from GNOME
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown 
+#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 & disown 

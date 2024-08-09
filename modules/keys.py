@@ -90,6 +90,16 @@ keys = [
         "XF86AudioMute",
         lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh mute"),
     ),
+    Key(
+        [],
+        "XF86MonBrightnessUp",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/brightness.sh up"),
+    ),
+    Key(
+        [],
+        "XF86MonBrightnessDown",
+        lazy.spawn("/home/kippster/.config/qtile/scripts/brightness.sh down"),
+    ),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
     Key([mod], "comma", lazy.spawn("xautolock -locknow")),
     Key(

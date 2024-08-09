@@ -5,32 +5,7 @@ from qtile_extras import widget
 from qtile_extras.widget.decorations import RectDecoration
 
 from . import defaults
-
-
-class Volume(widget.Volume):
-    def setIcon(self):
-        if self.volume <= 0:
-            self.text = "婢 "
-        elif self.volume <= 35:
-            self.text = " "
-        elif self.volume < 70:
-            self.text = " "
-        else:
-            self.text = "墳 "
-
-    def _configure(self, qtile, bar):
-        widget.Volume._configure(self, qtile, bar)
-        self.volume = self.get_volume()
-        self.setIcon()
-        # drawing here crashes Wayland
-
-    def _update_drawer(self, wob=False):
-        self.setIcon()
-        self.draw()
-
-        if wob:
-            with open(self.wob, "a") as f:
-                f.write(str(self.volume) + "\n")
+from .utils import has_internet
 
 
 def parseWidgets(leftWidgets, middleWidgets, rightWidgets):
@@ -130,13 +105,13 @@ rightWidgets = [
     widget.DF(
         **decoration(defaults.colors["purple"]),
         # format="力 {r:0>2.0f}%",
-        format="力 {f}{m}B",
+        format=" {f}{m}B",
         visible_on_warn=False,
         mouse_callbacks={"Button1": lambda: qtile.cmd_spawn("baobab")},
     ),
     widget.CPU(
         **decoration(defaults.colors["yellow"]),
-        format=" {load_percent:0>2.0f}%",
+        format=" {load_percent:0>2.0f}%",
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e htop")
         },
@@ -160,17 +135,23 @@ rightWidgets = [
             "Button1": lambda: qtile.cmd_spawn(defaults.terminal + " -e htop")
         },
     ),
-    widget.Wlan(
+    widget.GenPollText(
         **decoration(defaults.colors["blue"], left=True),
-        format="󰖩 ",
-        disconnected_message="睊 ",
+        func=has_internet,
+        update_interval=30,
         fontsize=defaults.fontSize + 5,
-        mouse_callbacks={
-            "Button1": lambda: qtile.cmd_spawn(
-                "eww open-many --toggle background-closer system-menu"
-            )
-        },
     ),
+    # widget.Wlan(
+    #     **decoration(defaults.colors["blue"], left=True),
+    #     format="󰖩 ",
+    #     disconnected_message="睊 ",
+    #     fontsize=defaults.fontSize + 5,
+    #     mouse_callbacks={
+    #         "Button1": lambda: qtile.cmd_spawn(
+    #             "eww open-many --toggle background-closer system-menu"
+    #         )
+    #     },
+    # ),
     widget.UPowerWidget(
         background=defaults.colors["blue"],
         border_charge_colour=defaults.colors["dark"],
@@ -209,9 +190,12 @@ rightWidgets = [
             )
         },
     ),
-    Volume(
+    widget.PulseVolume(
         **decoration(defaults.colors["blue"], right=True),
         fontsize=defaults.fontSize + 5,
+        mute_format=" ",
+        emoji=True,
+        emoji_list=[" ", " ", " ", " "],
         mouse_callbacks={
             "Button1": lambda: qtile.cmd_spawn(
                 "eww open-many --toggle background-closer system-menu"

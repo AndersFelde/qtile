@@ -1,5 +1,5 @@
 #!/bin/bash
-wallpaper="/usr/share/endeavouros/backgrounds/eos_wallpapers_community/Endy_planet.png"
+wallpaper="/usr/share/backgrounds/archlinux/gritty.png"
 feh --bg-scale $wallpaper
 
 if [ -n "$(ls -A /home/kippster/.cache/betterlockscreen/current/ 2>/dev/null)" ]
