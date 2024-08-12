@@ -1,9 +1,46 @@
-from libqtile.config import Key, Group
+from libqtile.config import DropDown, Group, Key, ScratchPad
 from libqtile.lazy import lazy
-from .keys import keys, mod
-from libqtile.config import ScratchPad, DropDown
 
-groups = [Group(i, label="") for i in "123456789"]
+from .keys import keys, mod
+
+group_names = "123456789"
+
+
+def go_to_group(name: str):
+    def _inner(qtile):
+        if len(qtile.screens) == 1:
+            qtile.groups_map[name].toscreen()
+            return
+
+        if name in group_names[:5]:
+            qtile.focus_screen(0)
+            qtile.groups_map[name].toscreen()
+        else:
+            qtile.focus_screen(1)
+            qtile.groups_map[name].toscreen()
+
+    return _inner
+
+
+def go_to_group_and_move_window(name: str):
+    def _inner(qtile):
+        if len(qtile.screens) == 1:
+            qtile.current_window.togroup(name, switch_group=True)
+            return
+
+        if name in group_names[:5]:
+            qtile.current_window.togroup(name, switch_group=False)
+            qtile.focus_screen(0)
+            qtile.groups_map[name].toscreen(0)
+        else:
+            qtile.current_window.togroup(name, switch_group=False)
+            qtile.focus_screen(1)
+            qtile.groups_map[name].toscreen(1)
+
+    return _inner
+
+
+groups = [Group(i, label="") for i in group_names]
 
 for group in groups:
     keys.extend(
@@ -12,18 +49,28 @@ for group in groups:
             Key(
                 [mod],
                 group.name,
-                lazy.group[group.name].toscreen(),
+                # lazy.group[group.name].toscreen(),
+                lazy.function(go_to_group(group.name)),
                 desc="Switch to group {}".format(group.name),
             ),
-            Key([mod], "Right", lazy.screen.next_group(), desc="Switch to next group"),
             Key(
-                [mod], "Left", lazy.screen.prev_group(), desc="Switch to previous group"
+                [mod],
+                "Right",
+                lazy.screen.next_group(skip_managed=True),
+                desc="Switch to next group",
+            ),
+            Key(
+                [mod],
+                "Left",
+                lazy.screen.prev_group(skip_managed=True),
+                desc="Switch to previous group",
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
                 [mod, "shift"],
                 group.name,
-                lazy.window.togroup(group.name, switch_group=False),
+                # lazy.window.togroup(group.name, switch_group=False),
+                lazy.function(go_to_group_and_move_window(group.name)),
                 desc="Switch to & dont move focused window to group {}".format(
                     group.name
                 ),
