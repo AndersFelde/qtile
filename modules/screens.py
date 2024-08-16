@@ -1,4 +1,4 @@
-from libqtile import bar
+from libqtile import bar, hook, qtile
 from libqtile.config import Screen
 
 from . import defaults
@@ -24,3 +24,8 @@ screens = [
         ),
     ),
 ]
+
+
+@hook.subscribe.screen_change
+def restart_on_randr(_):
+    qtile.cmd_reload_config()
