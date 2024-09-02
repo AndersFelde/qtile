@@ -26,6 +26,6 @@ screens = [
 ]
 
 
-@hook.subscribe.screen_change
-def restart_on_randr(_):
-    qtile.cmd_reload_config()
+# @hook.subscribe.screen_change
+# def restart_on_randr(_):
+#     qtile.cmd_reload_config()
