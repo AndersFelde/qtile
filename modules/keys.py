@@ -127,4 +127,16 @@ keys = [
     ),
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key([mod], "p", lazy.spawn("flameshot gui")),
+    Key(
+        [mod],
+        "Right",
+        lazy.screen.next_group(skip_managed=True),
+        desc="Switch to next group",
+    ),
+    Key(
+        [mod],
+        "Left",
+        lazy.screen.prev_group(skip_managed=True),
+        desc="Switch to previous group",
+    ),
 ]

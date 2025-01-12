@@ -53,18 +53,6 @@ for group in groups:
                 lazy.function(go_to_group(group.name)),
                 desc="Switch to group {}".format(group.name),
             ),
-            Key(
-                [mod],
-                "Right",
-                lazy.screen.next_group(skip_managed=True),
-                desc="Switch to next group",
-            ),
-            Key(
-                [mod],
-                "Left",
-                lazy.screen.prev_group(skip_managed=True),
-                desc="Switch to previous group",
-            ),
             # mod1 + shift + letter of group = switch to & move focused window to group
             Key(
                 [mod, "shift"],
@@ -88,7 +76,7 @@ groups.append(
         [
             DropDown(
                 "alacritty",
-                "alacritty",
+                "alacritty -e tmux new-session -A -s dropdown",
                 width=0.8,
                 height=0.6,
                 on_focus_lost_hide=True,
