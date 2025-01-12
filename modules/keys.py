@@ -1,7 +1,7 @@
 from libqtile.config import Key
 from libqtile.lazy import lazy
 
-from .defaults import mod, terminal
+from .defaults import mod, qtile_dir, rofi_dir, terminal
 
 # mod = "mod4"
 # terminal = "alacritty"
@@ -78,40 +78,40 @@ keys = [
     Key(
         [],
         "XF86AudioRaiseVolume",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh up"),
+        lazy.spawn(qtile_dir + "/scripts/volume.sh up"),
     ),
     Key(
         [],
         "XF86AudioLowerVolume",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh down"),
+        lazy.spawn(qtile_dir + "/scripts/volume.sh down"),
     ),
     Key(
         [],
         "XF86AudioMute",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/volume.sh mute"),
+        lazy.spawn(qtile_dir + "/scripts/volume.sh mute"),
     ),
     Key(
         [],
         "XF86MonBrightnessUp",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/brightness.sh up"),
+        lazy.spawn(qtile_dir + "/scripts/brightness.sh up"),
     ),
     Key(
         [],
         "XF86MonBrightnessDown",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/brightness.sh down"),
+        lazy.spawn(qtile_dir + "/scripts/brightness.sh down"),
     ),
     Key([mod], "b", lazy.group["scratchpad"].dropdown_toggle("alacritty")),
     Key([mod], "comma", lazy.spawn("xautolock -locknow")),
     Key(
         [mod],
         "space",
-        lazy.spawn("/home/kippster/.config/rofi/launchers/misc/launcher.sh"),
+        lazy.spawn(rofi_dir + "/launchers/misc/launcher.sh"),
         desc="Application launcher",
     ),
     Key(
         ["mod1"],  # alt
         "Tab",
-        lazy.spawn("/home/kippster/.config/rofi/launchers/misc/window_switcher.sh"),
+        lazy.spawn(rofi_dir + "/launchers/misc/window_switcher.sh"),
         desc="Application launcher",
     ),
     Key(
@@ -123,7 +123,7 @@ keys = [
     Key(
         [mod, "shift"],
         "s",
-        lazy.spawn("/home/kippster/.config/qtile/scripts/screenshot.sh down"),
+        lazy.spawn(qtile_dir + "/scripts/screenshot.sh down"),
     ),
     Key([], "Print", lazy.spawn("flameshot gui")),
     Key([mod], "p", lazy.spawn("flameshot gui")),

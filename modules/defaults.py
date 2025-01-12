@@ -1,4 +1,6 @@
 font = "CaskaydiaCove NF"
+import os
+
 fontSize = 18
 padding = 10
 separator = 25
@@ -30,3 +32,6 @@ widget_defaults = dict(
     appendSeparator=True,
     foreground=colors["dark"],
 )
+home_dir = os.path.expanduser("~")
+qtile_dir = os.path.join(home_dir, ".config", "qtile")
+rofi_dir = os.path.join(home_dir, ".config", "rofi")
