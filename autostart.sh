@@ -1,4 +1,6 @@
 #!/bin/sh
+chmod +x ~/.config/qtile/scripts/*.sh
+
 ~/.config/qtile/scripts/autolock.sh & disown
 ~/.config/qtile/scripts/wallpaper.sh & disown
 
