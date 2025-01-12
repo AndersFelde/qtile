@@ -6,8 +6,9 @@ import os
 
 @hook.subscribe.startup_once
 def autostart():
-    home = os.path.expanduser("~/.config/qtile/autostart.sh")
-    subprocess.call([home])
+    script = os.path.expanduser("~/.config/qtile/autostart.sh")
+    subprocess.run(["chmod", "+x", script])
+    subprocess.call([script])
 
 
 @hook.subscribe.client_name_updated
